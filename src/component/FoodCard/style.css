@@ -1,0 +1,68 @@
+.foodCard{
+    width: 22rem;
+    height: 15rem;
+    border-radius: 2rem;
+    background: linear-gradient(-60deg, #c7afff, #ffc456);
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    font-family: Effra;
+}
+
+.foodCard-leftDiv{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    padding-top: 2.2rem;
+    font-size: 1.7em;
+    font-weight: bolder;
+}
+.foodRate{
+    font-size: 1.3rem;
+    margin-top: 1rem;
+}
+
+.foodCard-rightDiv{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+
+}
+.foodImage{
+    width: 10rem;
+    height: 10rem;
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+}
+.foodOrderCounter{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #ffc456;
+    border-radius: 50%;
+    margin-top: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+.foodPrice{
+    margin-left: 1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+span{
+    color: #b3ffb0;
+    font-size: 1.2rem;
+}

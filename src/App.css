@@ -1,0 +1,87 @@
+@font-face {
+    font-family: "Effra";
+    src: url("./Font/Effra_Std_Lt.ttf");
+}
+
+.header{
+    width: 100%;
+    height: 15rem;
+    position: relative;
+    background-image: url(https://mahdimajdian.github.io/Resturant-App/assets/haeder.png);
+    font-family: Effra;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+}
+.header-container{
+    width: 75%;
+    height: 100%;
+}
+
+.headerOveraly{
+    width: 100%;
+    height: 5rem;
+    border-radius: 5rem 5rem 0 0;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+}
+.eatHealthyText{
+    position: absolute;
+    top: 35%;
+    left: 15%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+.lifeHealthyText{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+.headerImg{
+    position: absolute;
+    width: 11rem;
+    height: 11rem;
+    top : 2rem;
+    left: 40%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.left-panel{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.foodCard-Container{
+    width: 75%;
+    height: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.right-panel{
+    position: absolute;
+    right: 0;
+    top: 10rem;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(64, 47, 136);
+}
