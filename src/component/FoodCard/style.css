@@ -22,8 +22,15 @@
     font-weight: bolder;
 }
 .foodRate{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.foodRate i{
+    font-size: 1.8rem;
+    color: #fff068;
 }
 
 .foodCard-rightDiv{

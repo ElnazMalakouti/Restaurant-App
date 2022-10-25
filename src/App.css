@@ -5,7 +5,7 @@
 
 .header{
     width: 100%;
-    height: 15rem;
+    height: 11rem;
     position: relative;
     background-image: url(https://mahdimajdian.github.io/Resturant-App/assets/haeder.png);
     font-family: Effra;
@@ -20,15 +20,16 @@
 
 .headerOveraly{
     width: 100%;
-    height: 5rem;
+    height: 4rem;
     border-radius: 5rem 5rem 0 0;
     background-color: #fff;
     position: absolute;
     bottom: 0;
+    z-index: 1;
 }
 .eatHealthyText{
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 15%;
     transform: translateY(-50%);
     font-weight: bold;
@@ -36,7 +37,7 @@
 }
 .lifeHealthyText{
     position: absolute;
-    top: 35%;
+    top: 53%;
     left: 50%;
     transform: translateY(-50%);
     font-weight: bold;
@@ -50,24 +51,28 @@
     left: 40%;
     transform: translateX(-50%);
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    z-index: 1;
 }
 
 .main{
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
 }
+
 .left-panel{
     width: 75%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    transform: translateY(-6.5%);
+    /* margin-top: 1rem; */
 }
 .foodCard-Container{
     width: 75%;
-    height: 100%;
+    max-height: 73vh;
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
@@ -76,16 +81,20 @@
     align-items: center;
     gap: 2.5rem;
     padding-bottom: 2rem;
+    overflow-y: auto;
+    padding-top: 7rem;
+}
+.foodCard-Container::-webkit-scrollbar{
+    display: none;
 }
 .right-panel{
     position: absolute;
     right: 0;
-    top: 10rem;
+    top: 11rem;
     width: 25%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* justify-content: start; */
     align-items: center;
     background-color: rgb(64, 47, 136);
 }
@@ -187,7 +196,7 @@
     height: 2.5rem;
     background-color: #ffa600;
     border: none;
-    margin-top: 1rem;
+    margin-top: .8rem;
     border-radius: 1.5rem;
     color: #2c2c2c;
     font-size: 1rem;

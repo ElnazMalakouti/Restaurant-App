@@ -1,10 +1,11 @@
 import './style.css'
+import { AiFillStar } from 'react-icons/ai';
 
 const FoodCard = ({foodRate , foodName , foodImageLink , foodOrderCounter , foodPrice}) => {
     return(
         <div className="foodCard">
             <div className='foodCard-leftDiv'>
-                <p className='foodRate'>{foodRate}</p>
+                <p className='foodRate'>{foodRate} <i><><AiFillStar/></></i></p>
                 <p>{foodName}</p>
             </div>
             <div className='foodCard-rightDiv'>

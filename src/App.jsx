@@ -3,6 +3,7 @@ import FoodCard from './component/FoodCard'
 import Headerimage from '../src/pics/header-img.png'
 import { MdDone } from 'react-icons/md';
 import { FaShoppingCart } from 'react-icons/fa';
+import PopUp from './component/PopUp';
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
   return (
     <div>
       <header className='header'>
-        <div className='headerOveraly'></div>
+        {/* <div className='headerOveraly'></div> */}
 
         <div className='header-container'>
           <div className='eatHealthyText'>Eat Healthy</div>
@@ -99,6 +100,8 @@ function App() {
         </div>
       </div>
 
+
+{/* <PopUp/> */}
     </div>
   )
 }

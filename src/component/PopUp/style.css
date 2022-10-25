@@ -1,0 +1,73 @@
+.popUp-container{
+    width: 35rem;
+    height: 25rem;
+    background: linear-gradient(45deg, #ff7300 -10%, #ffd13a 110%);
+    color: #fff;
+    border-radius: 2rem;
+    border-top: 3px solid;
+    border-right: 3px solid;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+}
+
+.closeBtn-div{
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    font-size: 2.5rem;
+}
+.foodImg{
+    width: 13rem;
+    height: 13rem;
+    position: absolute;
+    top: 0;
+    left: 50%;  
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25));
+    transform: translate(-50%, -50%);
+}
+
+.foodName{
+    margin-top: 8rem;
+    font-size: 2rem;
+}
+
+.rateAndPrice , .countAndTotal{
+    width: 60%;
+    margin-top: 1rem;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.countAndTotal{
+    width: 75%;
+}
+
+.count-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 10rem;
+    height: 4rem;
+    background-color: #fff;
+    color: #ff9a00;
+    border-radius: 2rem
+}
+.count-div button{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+    background-color: #ff9a00;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
