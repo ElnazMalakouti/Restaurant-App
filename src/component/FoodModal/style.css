@@ -85,3 +85,15 @@
     justify-content: center;
     align-items: center;
 }
+span{
+    color: #b3ffb0;
+    font-size: 2rem;
+    /* margin-left: 1rem; */
+}
+.modalfooFRate i{
+    font-size: 2rem;
+    color: #fff068;
+}
+.totalPrice-p span{
+    margin-left: .5rem;
+}
