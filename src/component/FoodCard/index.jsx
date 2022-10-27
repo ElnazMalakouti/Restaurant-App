@@ -1,9 +1,9 @@
 import './style.css'
 import { AiFillStar } from 'react-icons/ai';
 
-const FoodCard = ({foodRate , foodName , foodImageLink , foodOrderCounter , foodPrice}) => {
+const FoodCard = ({foodId , foodRate , foodName , foodImageLink , foodOrderCounter , foodPrice , onClickHandler , foodModalProps , setFoodModalProps}) => {
     return(
-        <div className="foodCard">
+        <div className="foodCard" onClick={()=>onClickHandler(foodId)}>
             <div className='foodCard-leftDiv'>
                 <p className='foodRate'>{foodRate} <i><><AiFillStar/></></i></p>
                 <p>{foodName}</p>

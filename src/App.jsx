@@ -3,12 +3,14 @@ import FoodCard from './component/FoodCard'
 import Headerimage from '../src/pics/header-img.png'
 import { MdDone } from 'react-icons/md';
 import { FaShoppingCart } from 'react-icons/fa';
-import PopUp from './component/PopUp';
+import { useState } from 'react';
+import FoodModal from './component/FoodModal';
 
 
 function App() {
   const foodList = [
     {
+      foodId : 1 ,
       foodRate : 3.9,
       foodName : "Spicy Rote Pasta and Cheese",
       foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-1.png',
@@ -17,6 +19,7 @@ function App() {
     },
 
     {
+      foodId : 2 ,
       foodRate : 4.5,
       foodName : "Cured Salmon",
       foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-2.png',
@@ -25,6 +28,7 @@ function App() {
     },
 
     {
+      foodId : 3 ,
       foodRate : 5,
       foodName : "Poke with Chicken",
       foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-3.png',
@@ -33,6 +37,7 @@ function App() {
     },
 
     {
+      foodId : 4 ,
       foodRate : 2.8,
       foodName : "Macaroni baby with red sause",
       foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-1.png',
@@ -41,6 +46,7 @@ function App() {
     },
 
     {
+      foodId : 5 ,
       foodRate : 3.6,
       foodName : "Stake Beef with special oil",
       foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-2.png',
@@ -48,6 +54,22 @@ function App() {
       foodPrice : 12.99
     }
   ]
+
+  const [foodModalProps , setFoodModalProps] = useState("")
+
+  const foodCardClickHandler = (id) => {
+    const clickedFood = foodList.find(item => item.foodId === id)
+    const tempFoodModalProps = {
+      foodId : clickedFood.foodId,
+      foodName : clickedFood.foodName,
+      foodRate : clickedFood.foodRate,
+      foodImageLink : clickedFood.foodImageLink,
+      foodOrderCounter : clickedFood.foodOrderCounter,
+      foodPrice : clickedFood.foodPrice
+    }
+    setFoodModalProps(tempFoodModalProps)
+
+  }
 
   return (
     <div>
@@ -71,11 +93,15 @@ function App() {
           {
             foodList.map(item => {
               return <FoodCard 
+              foodId={item.foodId}
               foodRate={item.foodRate}
               foodName={item.foodName}
               foodImageLink={item.foodImageLink}
               foodOrderCounter={item.foodOrderCounter}
               foodPrice={item.foodPrice}
+              foodModalProps={foodModalProps}
+              setFoodModalProps={setFoodModalProps}
+              onClickHandler={foodCardClickHandler}
               />
             })
           }
@@ -101,7 +127,7 @@ function App() {
       </div>
 
 
-{/* <PopUp/> */}
+      {Boolean(foodModalProps) && <FoodModal {...foodModalProps} setFoodModalProps={setFoodModalProps}/>}
     </div>
   )
 }
