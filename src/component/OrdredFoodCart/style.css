@@ -1,0 +1,57 @@
+.ordredFoodCart--container{
+    width: 95%;
+    height: auto;
+    /* padding: 0 1.2rem .2rem ; */
+    /* margin-bottom: 1rem; */
+    border-bottom: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    color: rgb(64, 47, 136);
+    background-color: transparent;
+}
+
+.ordredFoodCart--child{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ordredFoodCart--foodName{
+    font-size: 1rem;
+}
+
+
+.count-btn , .ordredFoodCart--btn__remove{
+    border: none;
+    background: none;
+    font-size: 1rem;
+    color: rgb(64, 47, 136);
+}
+.count-btn{
+    width: 16px;
+    height: 16px;
+}
+
+.ordredFoodCart--btn__remove{
+    font-size: 1.7rem;
+}
+
+.foodCount{
+    font-size: 1.3rem;
+}
+
+.addORsub-count{
+    display: flex;
+    gap: .7rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.total{
+    font-size: 1.5rem;
+}
+.total span{
+    font-size: 1.5rem;
+    color: rgb(64, 47, 136);
+}

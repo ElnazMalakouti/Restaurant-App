@@ -3,32 +3,11 @@ import { IoMdCloseCircle } from 'react-icons/io';
 import { AiFillStar } from 'react-icons/ai';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
-import { useState } from 'react';
 
-const FoodModal = ({foodId , foodRate , foodName , foodImageLink , foodOrderCounter , foodPrice  , setFoodModalProps}) => {
-    const [foodCounter , setFoodCounter] = useState(0)
-    const [foodTotalprice , setFoodTotalPrice] = useState(0)
+const FoodModal = ({foodId , foodRate , foodName , foodImageLink , foodOrderCounter , foodPrice  , setFoodModalProps , foodCounter , addFoodOrder , removeFoodOrder}) => {
+    
 
-    const totalSumPriceOperation = () => {
-        var tempCounter = foodCounter
-        tempCounter += 1
-        var totalPrice = tempCounter * foodPrice
-        setFoodTotalPrice(totalPrice)
-        setFoodCounter(tempCounter)
-    }
-    const totalMinusPriceOperation = () => {
-        var tempCounter = foodCounter
-        if(tempCounter === 0){
-            setFoodTotalPrice(0)
-            setFoodCounter(0)
-        }else{
-            tempCounter -= 1
-            var totalPrice = tempCounter * foodPrice
-            setFoodTotalPrice(totalPrice)
-            setFoodCounter(tempCounter)
-        }
-        
-    }
+    
 
     return(
     <div className='popUp-fullScreen'>
@@ -44,11 +23,11 @@ const FoodModal = ({foodId , foodRate , foodName , foodImageLink , foodOrderCoun
             </div>
             <div className='countAndTotal'>
                 <div className='count-div'>
-                    <button onClick={()=>totalMinusPriceOperation()}><><FaMinus/></></button>
+                    <button onClick={removeFoodOrder}><><FaMinus/></></button>
                     <p>{foodCounter}</p>
-                    <button onClick={()=>totalSumPriceOperation()}><><FaPlus/></></button>
+                    <button onClick={addFoodOrder}><><FaPlus/></></button>
                 </div>
-                <p className='totalPrice-p'>Total:{foodTotalprice}<span>$</span></p>
+                <p className='totalPrice-p'>Total:{(foodCounter * foodPrice).toFixed(2)}<span>$</span></p>
             </div>
         </div>
     </div>

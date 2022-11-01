@@ -5,67 +5,137 @@ import { MdDone } from 'react-icons/md';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useState } from 'react';
 import FoodModal from './component/FoodModal';
+import OrdredFoodCart from './component/OrdredFoodCart';
+import { useEffect } from 'react';
 
 
 function App() {
+
   const foodList = [
     {
-      foodId : 1 ,
-      foodRate : 3.9,
-      foodName : "Spicy Rote Pasta and Cheese",
-      foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-1.png',
-      foodOrderCounter : 0,
-      foodPrice : 139.01
+      foodId: 1,
+      foodRate: 3.9,
+      foodName: "Spicy Rote Pasta and Cheese",
+      foodImageLink: 'https://mahdimajdian.github.io/Resturant-App/assets/plate-1.png',
+      foodOrderCounter: 0,
+      foodPrice: 139.01
     },
 
     {
-      foodId : 2 ,
-      foodRate : 4.5,
-      foodName : "Cured Salmon",
-      foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-2.png',
-      foodOrderCounter : 0,
-      foodPrice : 29.99
+      foodId: 2,
+      foodRate: 4.5,
+      foodName: "Cured Salmon",
+      foodImageLink: 'https://mahdimajdian.github.io/Resturant-App/assets/plate-2.png',
+      foodOrderCounter: 0,
+      foodPrice: 29.99
     },
 
     {
-      foodId : 3 ,
-      foodRate : 5,
-      foodName : "Poke with Chicken",
-      foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-3.png',
-      foodOrderCounter : 0,
-      foodPrice : 34.45
+      foodId: 3,
+      foodRate: 5,
+      foodName: "Poke with Chicken",
+      foodImageLink: 'https://mahdimajdian.github.io/Resturant-App/assets/plate-3.png',
+      foodOrderCounter: 0,
+      foodPrice: 34.45
     },
 
     {
-      foodId : 4 ,
-      foodRate : 2.8,
-      foodName : "Macaroni baby with red sause",
-      foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-1.png',
-      foodOrderCounter : 0,
-      foodPrice : 15.99
+      foodId: 4,
+      foodRate: 2.8,
+      foodName: "Macaroni baby with red sause",
+      foodImageLink: 'https://mahdimajdian.github.io/Resturant-App/assets/plate-1.png',
+      foodOrderCounter: 0,
+      foodPrice: 15.99
     },
 
     {
-      foodId : 5 ,
-      foodRate : 3.6,
-      foodName : "Stake Beef with special oil",
-      foodImageLink : 'https://mahdimajdian.github.io/Resturant-App/assets/plate-2.png',
-      foodOrderCounter : 0,
-      foodPrice : 12.99
+      foodId: 5,
+      foodRate: 3.6,
+      foodName: "Stake Beef with special oil",
+      foodImageLink: 'https://mahdimajdian.github.io/Resturant-App/assets/plate-2.png',
+      foodOrderCounter: 0,
+      foodPrice: 12.99
     }
   ]
 
-  const [foodModalProps , setFoodModalProps] = useState("")
+  const [foodModalProps, setFoodModalProps] = useState("")
+
+  const [sumPrice , setSumPrice] = useState(0)
+
+
+  const [orderCart, setOrderCart] = useState([])
+
+
+  const addFoodOrder = (id) => {
+    const temp = orderCart.find(item => item.id === id)
+
+    if (temp) {
+      setOrderCart(orderCart.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            count: item.count + 1
+          }
+        } else {
+          return item
+        }
+      }))
+    } else {
+      const newFoodOrder = {
+        id: id,
+        count: 1
+      }
+      setOrderCart([...orderCart, newFoodOrder])
+    }
+  }
+
+
+  const removeFoodOrder = (id,fullRemove) => {
+    const temp = orderCart.find(item => item.id === id)
+
+    if(temp){
+
+      if(temp.count > 1 && !fullRemove){
+        setOrderCart(orderCart.map(item => {
+          if(item.id === id){
+            return{
+              ...item ,
+              count : item.count - 1
+            }
+          }else{
+            return item
+          }
+        }))
+      }else{
+        setOrderCart(orderCart.filter(item => item.id !== id))
+      }
+      
+    }
+
+
+  }
+
+
+  // const sumPriceHandler = () => {
+  //   orderCart.map(item => {
+  //     const temp = foodList.find(food => food.foodId === item.id)
+  //     const sum = temp.foodPrice * item.count
+  //     return sum
+  //   })
+  //   sum && setSumPrice(sumPrice + sum)
+  // }
+
+
 
   const foodCardClickHandler = (id) => {
     const clickedFood = foodList.find(item => item.foodId === id)
     const tempFoodModalProps = {
-      foodId : clickedFood.foodId,
-      foodName : clickedFood.foodName,
-      foodRate : clickedFood.foodRate,
-      foodImageLink : clickedFood.foodImageLink,
-      foodOrderCounter : clickedFood.foodOrderCounter,
-      foodPrice : clickedFood.foodPrice
+      foodId: clickedFood.foodId,
+      foodName: clickedFood.foodName,
+      foodRate: clickedFood.foodRate,
+      foodImageLink: clickedFood.foodImageLink,
+      foodOrderCounter: clickedFood.foodOrderCounter,
+      foodPrice: clickedFood.foodPrice
     }
     setFoodModalProps(tempFoodModalProps)
 
@@ -79,57 +149,82 @@ function App() {
         <div className='header-container'>
           <div className='eatHealthyText'>Eat Healthy</div>
           <div className='headerImg'>
-            <img className='headerImg' src={Headerimage}/>
+            <img className='headerImg' src={Headerimage} />
           </div>
           <div className='lifeHealthyText'>Life Healthy</div>
         </div>
-        
+
 
       </header>
 
       <div className='main'>
         <div className='left-panel'>
           <div className='foodCard-Container'>
-          {
-            foodList.map(item => {
-              return <FoodCard 
-              foodId={item.foodId}
-              foodRate={item.foodRate}
-              foodName={item.foodName}
-              foodImageLink={item.foodImageLink}
-              foodOrderCounter={item.foodOrderCounter}
-              foodPrice={item.foodPrice}
-              foodModalProps={foodModalProps}
-              setFoodModalProps={setFoodModalProps}
-              onClickHandler={foodCardClickHandler}
-              />
-            })
-          }
+            {
+              foodList.map(item => {
+                const tempFood = orderCart.find(food => food.id === item.foodId)
+                return <FoodCard
+                  foodId={item.foodId}
+                  foodRate={item.foodRate}
+                  foodName={item.foodName}
+                  foodImageLink={item.foodImageLink}
+                  foodOrderCounter={tempFood?.count ?? 0}
+                  foodPrice={item.foodPrice}
+                  foodModalProps={foodModalProps}
+                  setFoodModalProps={setFoodModalProps}
+                  onClickHandler={foodCardClickHandler}
+                />
+              })
+            }
           </div>
         </div>
+
+
         <div className='right-panel'>
-          <div className='shoppingCart'><i><FaShoppingCart/></i>Your shopping cart is empty!</div>
+
+          <div className='shoppingCart'>{orderCart.map(item => {
+            const tempFood = foodList.find(food => food.foodId === item.id)
+            return <OrdredFoodCart count={item.count} foodName={tempFood.foodName} foodPrice={tempFood.foodPrice}/>
+          })}</div>
+
           <div className='placeOrder-div'>
             <p className='discountLable'>Discount Code?</p>
             <div className='discountCodeInput-div'>
-              <input className='discountCodeInput' placeholder='code'/>
-              <button className='discountCodeInput-btn'><><MdDone/></></button>
+              <input className='discountCodeInput' placeholder='code' />
+              <button className='discountCodeInput-btn'><><MdDone /></></button>
             </div>
+
             <div className='details'>
-              <p>Price: 0.00$ </p>
+              <p>
+                Price:
+                 {sumPrice}               
+                 $ 
+              </p>
               <p>Taxes: 0.00$ </p>
               <p>Discount: 0.00$ </p>
             </div>
+
             <p className='totalPrice'>Total: <span>0.00$</span></p>
             <button className='placeOrder-btn'>Place Order</button>
+
           </div>
+
         </div>
       </div>
+      
 
-
-      {Boolean(foodModalProps) && <FoodModal {...foodModalProps} setFoodModalProps={setFoodModalProps}/>}
+      {Boolean(foodModalProps) &&
+        <FoodModal {...foodModalProps}
+          setFoodModalProps={setFoodModalProps}
+          foodCounter={orderCart.find(item => item.id === foodModalProps.foodId)?.count ?? 0}
+          addFoodOrder={()=> addFoodOrder(foodModalProps.foodId)}
+          removeFoodOrder={()=> removeFoodOrder(foodModalProps.foodId)}
+        />}
     </div>
   )
 }
 
 export default App
+
+
+//<i><FaShoppingCart /></i>
