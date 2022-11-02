@@ -11,7 +11,7 @@ const OrdredFoodCart = ({foodName , count , foodPrice , addFoodOrder , subFoodOr
             <div className='ordredFoodCart--child'>
 
                 <p className='ordredFoodCart--foodName'>{foodName}</p>
-                <button className='ordredFoodCart--btn__remove'><><IoMdCloseCircle/></></button>
+                <button className='ordredFoodCart--btn__remove' onClick={removeFoodOrder}><><IoMdCloseCircle/></></button>
 
             </div>
 
@@ -19,9 +19,9 @@ const OrdredFoodCart = ({foodName , count , foodPrice , addFoodOrder , subFoodOr
             <div className='ordredFoodCart--child'>
 
                 <div className='addORsub-count'>
-                    <button className='count-btn'><><FaMinus/></></button>
+                    <button className='count-btn' onClick={subFoodOrder}><><FaMinus/></></button>
                     <p className='foodCount'>{count}</p>
-                    <button className='count-btn'><><FaPlus/></></button>
+                    <button className='count-btn' onClick={addFoodOrder}><><FaPlus/></></button>
                 </div>
 
                 <p className='total'>{(count * foodPrice).toFixed(2)} <span>$</span></p>
