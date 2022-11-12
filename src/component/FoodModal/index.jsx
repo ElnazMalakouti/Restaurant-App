@@ -23,9 +23,9 @@ const FoodModal = ({foodId , foodRate , foodName , foodImageLink , foodOrderCoun
             </div>
             <div className='countAndTotal'>
                 <div className='count-div'>
-                    <button onClick={removeFoodOrder}><><FaMinus/></></button>
+                    <button style={{cursor:'pointer'}} onClick={removeFoodOrder}><><FaMinus/></></button>
                     <p>{foodCounter}</p>
-                    <button onClick={addFoodOrder}><><FaPlus/></></button>
+                    <button style={{cursor:'pointer'}} onClick={addFoodOrder}><><FaPlus/></></button>
                 </div>
                 <p className='totalPrice-p'>Total:{(foodCounter * foodPrice).toFixed(2)}<span>$</span></p>
             </div>

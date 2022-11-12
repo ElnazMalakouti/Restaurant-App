@@ -30,10 +30,12 @@
 .count-btn{
     width: 16px;
     height: 16px;
+    cursor: pointer;
 }
 
 .ordredFoodCart--btn__remove{
     font-size: 1.7rem;
+    cursor: pointer;
 }
 
 .foodCount{
