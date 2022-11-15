@@ -73,8 +73,8 @@ function App() {
   //   discountPercent: 0
   // })
 
-  const [discountCodeInputVal , setDiscountCodeInputVal] = useState("")
-  const [discountPercent , setDiscountPercent] = useState(0)
+  const [discountCodeInputVal, setDiscountCodeInputVal] = useState("")
+  const [discountPercent, setDiscountPercent] = useState(0)
 
 
 
@@ -121,6 +121,8 @@ function App() {
         id: id,
         count: 1
       }
+
+      localStorage.setItem("order", JSON.stringify([...orderCart, newFoodOrder]))
       setOrderCart([...orderCart, newFoodOrder])
     }
   }
@@ -143,6 +145,7 @@ function App() {
           }
         }))
       } else {
+        localStorage.setItem("order", JSON.stringify(orderCart.filter(item => item.id !== id)))
         setOrderCart(orderCart.filter(item => item.id !== id))
       }
 
@@ -150,6 +153,26 @@ function App() {
 
 
   }
+
+
+
+  const syncLocalStorageWithState = () => {
+    if (localStorage.getItem("order")) {
+      setOrderCart(JSON.parse(localStorage.getItem("order")))
+    }
+  }
+
+  useEffect(() => {
+    syncLocalStorageWithState()
+  }, [])
+
+
+  useEffect(() => {
+    if (orderCart.length > 0) {
+      localStorage.setItem("order", JSON.stringify([...orderCart]))
+    }
+  }, [orderCart])
+
 
 
   useEffect(() => {
@@ -219,9 +242,6 @@ function App() {
         </div>
 
 
-              {console.log(discountCodeInputVal)}
-              {console.log(discountPercent)}              
-
         <div className='right-panel'>
 
           <div className='shoppingCart'>
@@ -254,6 +274,10 @@ function App() {
             </div>
 
 
+            {console.log(localStorage)}
+            {console.log(orderCart)}
+
+
             <div className='details'>
               <p>
                 Price:
@@ -267,7 +291,7 @@ function App() {
               </p>
             </div>
 
-            <p className='totalPrice'>Total: <span> {(((sumPrice + (sumPrice * 9 / 100)))-((discountPercent * sumPrice) / 100)).toFixed(2)} $</span></p>
+            <p className='totalPrice'>Total: <span> {(((sumPrice + (sumPrice * 9 / 100))) - ((discountPercent * sumPrice) / 100)).toFixed(2)} $</span></p>
             <button className='placeOrder-btn'>Place Order</button>
 
           </div>
